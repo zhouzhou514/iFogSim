@@ -47,7 +47,7 @@ public class VRGameFog {
 	
 	static boolean CLOUD = false;
 	
-	static int numOfDepts = 4;
+	static int numOfDepts = 9;
 	static int numOfMobilesPerDept = 6;
 	static double EEG_TRANSMISSION_TIME = 5.1;
 	//static double EEG_TRANSMISSION_TIME = 10;
@@ -67,7 +67,7 @@ public class VRGameFog {
 			String appId = "vr_game"; // identifier of the application
 			
 			FogBroker broker = new FogBroker("broker");
-			
+
 			Application application = createApplication(appId, broker.getId());
 			application.setUserId(broker.getId());
 			
@@ -136,7 +136,7 @@ public class VRGameFog {
 		
 	}
 
-	private static FogDevice addGw(String id, int userId, String appId, int parentId){
+	private static FogDevice addGw(String id, int userId, String appId, int parentId){	//Gate way
 		FogDevice dept = createFogDevice("d-"+id, 2800, 4000, 10000, 10000, 1, 0.0, 107.339, 83.4333);
 		fogDevices.add(dept);
 		dept.setParentId(parentId);
@@ -166,7 +166,7 @@ public class VRGameFog {
 	
 	/**
 	 * Creates a vanilla fog device
-	 * @param nodeName name of the device to be used in simulation
+	 * @param nodeName name of the device to be used in simulatio
 	 * @param mips MIPS
 	 * @param ram RAM
 	 * @param upBw uplink bandwidth
