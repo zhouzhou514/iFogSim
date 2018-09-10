@@ -12,7 +12,7 @@ Please check the `improv` branch for latest changes. Master branch has been left
 * Create a Java project in Eclipse. 
 * Inside the project directory, initialize an empty Git repository with the following command
 
-##Where is Ubike simulation?
+## Where is Ubike simulation?
 iFogSim\src\org\fog\test\perfeval.UBikeFog.java
 ```
 git init
