@@ -47,8 +47,8 @@ public class UBikeCloud {
 
     static boolean CLOUD = true;
 
-    static int numOfDepts = 3;
-    static int numOfSitesPerDept = 6;
+    static int numOfDepts = 4;
+    static int numOfSitesPerDept = 10;
     static int numOfWorkersPerDept = 1;
     static double UBIKE_TRANSMISSION_TIME = 300;
     //static double UBIKE_TRANSMISSION_TIME = 10;
@@ -127,7 +127,7 @@ public class UBikeCloud {
      * @param appId
      */
     private static void createFogDevices(int userId, String appId) {
-        FogDevice cloud = createFogDevice("cloud", 60000, 100000, 100, 10000, 0, 0.01, 5000, 3000); // creates the fog device Cloud at the apex of the hierarchy with level=0
+        FogDevice cloud = createFogDevice("cloud", 100000, 100000, 100, 10000, 0, 0.01, 5000, 3000); // creates the fog device Cloud at the apex of the hierarchy with level=0
         cloud.setParentId(-1);
         //FogDevice proxy = createFogDevice("proxy-server", 2800, 4000, 10000, 10000, 1, 0.0, 107.339, 83.4333); // creates the fog device Proxy Server (level=1)
         //proxy.setParentId(cloud.getId()); // setting Cloud as parent of the Proxy Server
@@ -258,7 +258,7 @@ public class UBikeCloud {
         /*
          * Adding modules (vertices) to the application model (directed graph)
          */
-        application.addAppModule("cloud_scheduler", 10000, 10000);
+        application.addAppModule("cloud_scheduler", 100000, 100000);
         //application.addAppModule("fog_predictor", 6000, 10000); // adding module Client to the application model
         application.addAppModule("bikedata_collector", 500,1000); // adding module Concentration Calculator to the application model
         application.addAppModule("worker_reminder", 1000, 1000); // adding module Connector to the application model
@@ -266,13 +266,13 @@ public class UBikeCloud {
          * Connecting the application modules (vertices) in the application model (directed graph) with edges
          */
         if(UBIKE_TRANSMISSION_TIME==UBIKE_TRANSMISSION_TIME)
-            application.addAppEdge("BIKE_USEAGE", "bikedata_collector", 2000, 500, "BIKE_USEAGE", Tuple.UP, AppEdge.SENSOR); // adding edge from BIKE_USEAGE (sensor) to Client module carrying tuples of type BIKE_USEAGE
+            application.addAppEdge("BIKE_USEAGE", "bikedata_collector", 20, 50, "BIKE_USEAGE", Tuple.UP, AppEdge.SENSOR); // adding edge from BIKE_USEAGE (sensor) to Client module carrying tuples of type BIKE_USEAGE
         else
-            application.addAppEdge("BIKE_USEAGE", "bikedata_collector", 3000, 500, "BIKE_USEAGE", Tuple.UP, AppEdge.SENSOR);
+            application.addAppEdge("BIKE_USEAGE", "bikedata_collector", 30, 50, "BIKE_USEAGE", Tuple.UP, AppEdge.SENSOR);
 
-        application.addAppEdge("bikedata_collector", "cloud_scheduler", 2000, 500, "SITE_STATE", Tuple.UP, AppEdge.MODULE);  // adding edge from Concentration Calculator to Client module carrying tuples of type CONCENTRATION
-        application.addAppEdge("cloud_scheduler", "worker_reminder", 1000, 1000, "SCHEDULE_COMMAND", Tuple.DOWN, AppEdge.MODULE); // adding periodic edge (period=1000ms) from Connector to Client module carrying tuples of type GLOBAL_GAME_STATE
-        application.addAppEdge("worker_reminder", "REMINDER_MSG", 1000, 1000, "REMINDER_MSG", Tuple.DOWN, AppEdge.ACTUATOR);  // adding edge from Client module to Display (actuator) carrying tuples of type SELF_STATE_UPDATE
+        application.addAppEdge("bikedata_collector", "cloud_scheduler", 20, 50, "SITE_STATE", Tuple.UP, AppEdge.MODULE);  // adding edge from Concentration Calculator to Client module carrying tuples of type CONCENTRATION
+        application.addAppEdge("cloud_scheduler", "worker_reminder", 300, 150, "SCHEDULE_COMMAND", Tuple.DOWN, AppEdge.MODULE); // adding periodic edge (period=1000ms) from Connector to Client module carrying tuples of type GLOBAL_GAME_STATE
+        application.addAppEdge("worker_reminder", "REMINDER_MSG", 10, 10, "REMINDER_MSG", Tuple.DOWN, AppEdge.ACTUATOR);  // adding edge from Client module to Display (actuator) carrying tuples of type SELF_STATE_UPDATE
         //application.addAppEdge("fog_predictor", "cloud_scheduler", 5000, 2000, "BLOCK_STATE", Tuple.UP, AppEdge.MODULE);  // adding edge from Client module to Display (actuator) carrying tuples of type GLOBAL_STATE_UPDATE
         //application.addAppEdge("cloud_scheduler", "worker_reminder", 1000, 1000, "CROSS_BLOCK_SCHEDULE", Tuple.DOWN, AppEdge.MODULE);  // adding edge from Client module to Display (actuator) carrying tuples of type GLOBAL_STATE_UPDATE
 
@@ -280,7 +280,7 @@ public class UBikeCloud {
         /*
          * Defining the input-output relationships (represented by selectivity) of the application modules.
          */
-        application.addTupleMapping("cloud_scheduler", "SITE_STATE", "SCHEDULE_COMMAND", new FractionalSelectivity(0.06)); // 0.9 tuples of type   are emitted by Client module per incoming tuple of type BIKE_USEAGE
+        application.addTupleMapping("cloud_scheduler", "SITE_STATE", "SCHEDULE_COMMAND", new FractionalSelectivity(0.05)); // 0.9 tuples of type   are emitted by Client module per incoming tuple of type BIKE_USEAGE
         //application.addTupleMapping("fog_predictor", "SITE_STATE", "BLOCK_STATE", new FractionalSelectivity(0.01)); // 1.0 tuples of type SELF_STATE_UPDATE are emitted by Client module per incoming tuple of type CONCENTRATION
         application.addTupleMapping("bikedata_collector", "BIKE_USEAGE", "SITE_STATE", new FractionalSelectivity(1.0)); // 1.0 tuples of type CONCENTRATION are emitted by Concentration Calculator module per incoming tuple of type
         application.addTupleMapping("worker_reminder", "SCHEDULE_COMMAND", "REMINDER_MSG", new FractionalSelectivity(1.0)); // 1.0 tuples of type GLOBAL_STATE_UPDATE are emitted by Client module per incoming tuple of type GLOBAL_GAME_STATE

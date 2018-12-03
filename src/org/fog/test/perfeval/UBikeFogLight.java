@@ -47,8 +47,8 @@ public class UBikeFogLight {
 
     static boolean CLOUD = true;
 
-    static int numOfDepts = 3;
-    static int numOfSitesPerDept = 6;
+    static int numOfDepts = 4;
+    static int numOfSitesPerDept = 10   ;
     static int numOfWorkersPerDept = 1;
     static double UBIKE_TRANSMISSION_TIME = 300;
     //static double UBIKE_TRANSMISSION_TIME = 10;
@@ -126,7 +126,7 @@ public class UBikeFogLight {
      * @param appId
      */
     private static void createFogDevices(int userId, String appId) {
-        FogDevice cloud = createFogDevice("cloud", 6000, 10000, 100, 10000, 0, 0.01, 500, 300); // creates the fog device Cloud at the apex of the hierarchy with level=0
+        FogDevice cloud = createFogDevice("cloud", 10000, 10000, 100, 10000, 0, 0.01, 500, 300); // creates the fog device Cloud at the apex of the hierarchy with level=0
         cloud.setParentId(-1);
         //FogDevice proxy = createFogDevice("proxy-server", 2800, 4000, 10000, 10000, 1, 0.0, 107.339, 83.4333); // creates the fog device Proxy Server (level=1)
         //proxy.setParentId(cloud.getId()); // setting Cloud as parent of the Proxy Server
@@ -141,7 +141,7 @@ public class UBikeFogLight {
     }
 
     private static FogDevice addGw(String id, int userId, String appId, int parentId){	//Gate way
-        FogDevice dept = createFogDevice("d-"+id, 6000, 10000, 1000, 2000, 1, 0.0, 500, 300);
+        FogDevice dept = createFogDevice("d-"+id, 10000, 10000, 1000, 2000, 1, 0.0, 500, 300);
         fogDevices.add(dept);
         dept.setParentId(parentId);
         dept.setUplinkLatency(500); // latency of connection between gateways and cloud server is 500 ms
@@ -170,12 +170,12 @@ public class UBikeFogLight {
         return mobile;
     }
     private static FogDevice addWorker(String id, int userId, String appId, int parentId){
-        FogDevice mobile = createFogDevice("mw-"+id, 300, 1000, 100, 1000, 2, 0.0, 10, 7);
+        FogDevice mobile = createFogDevice("mw-"+id, 500, 500, 100, 1000, 2, 0.0, 10, 7);
         mobile.setParentId(parentId);
         Actuator reminder = new Actuator("a-"+id, userId, appId, "REMINDER_MSG");
         actuators.add(reminder);
         reminder.setGatewayDeviceId(mobile.getId());
-        reminder.setLatency(100);  // latency of connection between reminder actuator and the Smartphone is 100 ms
+        reminder.setLatency(10);  // latency of connection between reminder actuator and the Smartphone is 10 ms
         return mobile;
     }
     /**
