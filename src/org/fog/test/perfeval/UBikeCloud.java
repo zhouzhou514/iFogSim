@@ -50,7 +50,7 @@ public class UBikeCloud {
     static int numOfDepts = 4;
     static int numOfSitesPerDept = 10;
     static int numOfWorkersPerDept = 1;
-    static double UBIKE_TRANSMISSION_TIME = 300;
+    static double UBIKE_TRANSMISSION_TIME = 45;
     //static double UBIKE_TRANSMISSION_TIME = 10;
 
     public static void main(String[] args) {
@@ -145,7 +145,7 @@ public class UBikeCloud {
         FogDevice dept = createFogDevice("d-"+id, 600, 1000, 1000, 2000, 1, 0.0, 50, 30);
         fogDevices.add(dept);
         dept.setParentId(parentId);
-        dept.setUplinkLatency(600); // latency of connection between gateways and cloud server is 500 ms
+        dept.setUplinkLatency(300); // latency of connection between gateways and cloud server is 500 ms
         for(int i=0;i<numOfSitesPerDept;i++){
             String mobileId = id+"-"+i;
             FogDevice mobile = addSite(mobileId, userId, appId, dept.getId()); // adding mobiles to the physical topology. Smartphones have been modeled as fog devices as well.
@@ -162,7 +162,7 @@ public class UBikeCloud {
     }
 
     private static FogDevice addSite(String id, int userId, String appId, int parentId){
-        FogDevice mobile = createFogDevice("ms-"+id, 1000, 1000, 100, 1000, 2, 0.0, 100, 70);
+        FogDevice mobile = createFogDevice("ms-"+id, 1000, 1000, 500, 1000, 2, 0.0, 100, 70);
         mobile.setParentId(parentId);
         Sensor ubikeSensor = new Sensor("s-"+id, "BIKE_USEAGE", userId, appId, new DeterministicDistribution(UBIKE_TRANSMISSION_TIME)); // inter-transmission time of BIKE_USEAGE sensor follows a deterministic distribution
         sensors.add(ubikeSensor);
@@ -258,21 +258,19 @@ public class UBikeCloud {
         /*
          * Adding modules (vertices) to the application model (directed graph)
          */
-        application.addAppModule("cloud_scheduler", 100000, 100000);
+        application.addAppModule("cloud_scheduler", 50000, 100000);
         //application.addAppModule("fog_predictor", 6000, 10000); // adding module Client to the application model
         application.addAppModule("bikedata_collector", 500,1000); // adding module Concentration Calculator to the application model
         application.addAppModule("worker_reminder", 1000, 1000); // adding module Connector to the application model
         /*
          * Connecting the application modules (vertices) in the application model (directed graph) with edges
          */
-        if(UBIKE_TRANSMISSION_TIME==UBIKE_TRANSMISSION_TIME)
-            application.addAppEdge("BIKE_USEAGE", "bikedata_collector", 20, 50, "BIKE_USEAGE", Tuple.UP, AppEdge.SENSOR); // adding edge from BIKE_USEAGE (sensor) to Client module carrying tuples of type BIKE_USEAGE
-        else
-            application.addAppEdge("BIKE_USEAGE", "bikedata_collector", 30, 50, "BIKE_USEAGE", Tuple.UP, AppEdge.SENSOR);
 
-        application.addAppEdge("bikedata_collector", "cloud_scheduler", 20, 50, "SITE_STATE", Tuple.UP, AppEdge.MODULE);  // adding edge from Concentration Calculator to Client module carrying tuples of type CONCENTRATION
-        application.addAppEdge("cloud_scheduler", "worker_reminder", 300, 150, "SCHEDULE_COMMAND", Tuple.DOWN, AppEdge.MODULE); // adding periodic edge (period=1000ms) from Connector to Client module carrying tuples of type GLOBAL_GAME_STATE
-        application.addAppEdge("worker_reminder", "REMINDER_MSG", 10, 10, "REMINDER_MSG", Tuple.DOWN, AppEdge.ACTUATOR);  // adding edge from Client module to Display (actuator) carrying tuples of type SELF_STATE_UPDATE
+        application.addAppEdge("BIKE_USEAGE", "bikedata_collector", 1000, 1000, "BIKE_USEAGE", Tuple.UP, AppEdge.SENSOR); // adding edge from BIKE_USEAGE (sensor) to Client module carrying tuples of type BIKE_USEAGE
+
+        application.addAppEdge("bikedata_collector", "cloud_scheduler", 100000, 1500, "SITE_STATE", Tuple.UP, AppEdge.MODULE);  // adding edge from Concentration Calculator to Client module carrying tuples of type CONCENTRATION
+        application.addAppEdge("cloud_scheduler", "worker_reminder", 3000, 1500, "SCHEDULE_COMMAND", Tuple.DOWN, AppEdge.MODULE); // adding periodic edge (period=1000ms) from Connector to Client module carrying tuples of type GLOBAL_GAME_STATE
+        application.addAppEdge("worker_reminder", "REMINDER_MSG", 1000, 1500, "REMINDER_MSG", Tuple.DOWN, AppEdge.ACTUATOR);  // adding edge from Client module to Display (actuator) carrying tuples of type SELF_STATE_UPDATE
         //application.addAppEdge("fog_predictor", "cloud_scheduler", 5000, 2000, "BLOCK_STATE", Tuple.UP, AppEdge.MODULE);  // adding edge from Client module to Display (actuator) carrying tuples of type GLOBAL_STATE_UPDATE
         //application.addAppEdge("cloud_scheduler", "worker_reminder", 1000, 1000, "CROSS_BLOCK_SCHEDULE", Tuple.DOWN, AppEdge.MODULE);  // adding edge from Client module to Display (actuator) carrying tuples of type GLOBAL_STATE_UPDATE
 

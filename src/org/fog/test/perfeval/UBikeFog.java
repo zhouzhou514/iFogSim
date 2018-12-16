@@ -47,10 +47,10 @@ public class UBikeFog {
 
     static boolean CLOUD = true;
 
-    static int numOfDepts = 4;
-    static int numOfSitesPerDept = 10;
+    static int numOfDepts = 10;
+    static int numOfSitesPerDept = 15;
     static int numOfWorkersPerDept = 1;
-    static double UBIKE_TRANSMISSION_TIME = 300;
+    static double UBIKE_TRANSMISSION_TIME = 35;
     //static double UBIKE_TRANSMISSION_TIME = 10;
 
     public static void main(String[] args) {
@@ -257,23 +257,21 @@ public class UBikeFog {
         /*
          * Adding modules (vertices) to the application model (directed graph)
          */
-        application.addAppModule("cloud_scheduler", 10000, 10000);
-        application.addAppModule("fog_predictor", 10000, 10000); // adding module Client to the application model
+        application.addAppModule("cloud_scheduler", 5000, 5000);
+        application.addAppModule("fog_predictor", 5000, 5000); // adding module Client to the application model
         application.addAppModule("bikedata_collector", 500, 500); // adding module Concentration Calculator to the application model
         application.addAppModule("worker_reminder", 500, 500); // adding module Connector to the application model
         /*
          * Connecting the application modules (vertices) in the application model (directed graph) with edges
          */
-        if(UBIKE_TRANSMISSION_TIME==300)
-            application.addAppEdge("BIKE_USEAGE", "bikedata_collector", 20, 50, "BIKE_USEAGE", Tuple.UP, AppEdge.SENSOR); // adding edge from BIKE_USEAGE (sensor) to Client module carrying tuples of type BIKE_USEAGE
-        else
-            application.addAppEdge("BIKE_USEAGE", "bikedata_collector", 30, 50, "BIKE_USEAGE", Tuple.UP, AppEdge.SENSOR);
+         // adding edge from BIKE_USEAGE (sensor) to Client module carrying tuples of type BIKE_USEAGE
+        application.addAppEdge("BIKE_USEAGE", "bikedata_collector", 300, 500, "BIKE_USEAGE", Tuple.UP, AppEdge.SENSOR);
 
-        application.addAppEdge("bikedata_collector", "fog_predictor", 20, 200, "SITE_STATE", Tuple.UP, AppEdge.MODULE);  // adding edge from Concentration Calculator to Client module carrying tuples of type CONCENTRATION
-        application.addAppEdge("fog_predictor", "worker_reminder",  300, 100, "SCHEDULE_COMMAND", Tuple.DOWN, AppEdge.MODULE); // adding periodic edge (period=1000ms) from Connector to Client module carrying tuples of type GLOBAL_GAME_STATE
-        application.addAppEdge("worker_reminder", "REMINDER_MSG", 50, 50, "REMINDER_MSG", Tuple.DOWN, AppEdge.ACTUATOR);  // adding edge from Client module to Display (actuator) carrying tuples of type SELF_STATE_UPDATE
-        application.addAppEdge("fog_predictor", "cloud_scheduler", 50, 50, "BLOCK_STATE", Tuple.UP, AppEdge.MODULE);  // adding edge from Client module to Display (actuator) carrying tuples of type GLOBAL_STATE_UPDATE
-        application.addAppEdge("cloud_scheduler", "worker_reminder", 150, 50, "CROSS_BLOCK_SCHEDULE", Tuple.DOWN, AppEdge.MODULE);  // adding edge from Client module to Display (actuator) carrying tuples of type GLOBAL_STATE_UPDATE
+        application.addAppEdge("bikedata_collector", "fog_predictor", 20000, 600, "SITE_STATE", Tuple.UP, AppEdge.MODULE);  // adding edge from Concentration Calculator to Client module carrying tuples of type CONCENTRATION
+        application.addAppEdge("fog_predictor", "worker_reminder",  1000, 500, "SCHEDULE_COMMAND", Tuple.DOWN, AppEdge.MODULE); // adding periodic edge (period=1000ms) from Connector to Client module carrying tuples of type GLOBAL_GAME_STATE
+        application.addAppEdge("worker_reminder", "REMINDER_MSG", 500, 500, "REMINDER_MSG", Tuple.DOWN, AppEdge.ACTUATOR);  // adding edge from Client module to Display (actuator) carrying tuples of type SELF_STATE_UPDATE
+        application.addAppEdge("fog_predictor", "cloud_scheduler", 20000, 500, "BLOCK_STATE", Tuple.UP, AppEdge.MODULE);  // adding edge from Client module to Display (actuator) carrying tuples of type GLOBAL_STATE_UPDATE
+        application.addAppEdge("cloud_scheduler", "worker_reminder", 1000, 500, "CROSS_BLOCK_SCHEDULE", Tuple.DOWN, AppEdge.MODULE);  // adding edge from Client module to Display (actuator) carrying tuples of type GLOBAL_STATE_UPDATE
 
 
         /*
