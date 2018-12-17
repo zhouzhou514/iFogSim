@@ -1,0 +1,129 @@
+footprint of simulation [fragments of raw data]
+cloud:
+
+#####################################
+dept = 4
+site = 4
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, cloud_scheduler, worker_reminder, REMINDER_MSG] ---> 1271.4676056338044
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 8.139963378347836
+BIKE_USEAGE ---> 0.3999999999996362
+SCHEDULE_COMMAND ---> 61.64133772729919
+=========================================
+cloud : Energy Consumed = 8542180.00000009
+d-0 : Energy Consumed = 180000.0
+Cost of execution in cloud = 671090.0000000026
+Total network usage = 212260.0
+
+
+#####################################
+dept = 4
+site = 8
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, cloud_scheduler, worker_reminder, REMINDER_MSG] ---> 1255.3424489795925
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 20.039999405164295
+BIKE_USEAGE ---> 0.3999999999996362
+SCHEDULE_COMMAND ---> 1.733333333333697
+=========================================
+cloud : Energy Consumed = 1.032929999999999E7
+d-0 : Energy Consumed = 180000.0
+Cost of execution in cloud = 1564650.0000000552
+Total network usage = 443153.3333333333
+
+
+#####################################
+dept = 4
+site = 12
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, cloud_scheduler, worker_reminder, REMINDER_MSG] ---> 1262.4041273584921
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 21.839999962911165
+BIKE_USEAGE ---> 0.3999999999996362
+SCHEDULE_COMMAND ---> 1.1666666666670304
+=========================================
+cloud : Energy Consumed = 1.1608739999999808E7
+d-0 : Energy Consumed = 180000.0
+Cost of execution in cloud = 2204370.0000000508
+Total network usage = 748471.6666666666
+
+
+#####################################
+dept = 4
+site = 16
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, cloud_scheduler, worker_reminder, REMINDER_MSG] ---> 1270.6606237816873
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 18.467343177800483
+BIKE_USEAGE ---> 0.3999999999996362
+SCHEDULE_COMMAND ---> 1.133333333333697
+=========================================
+cloud : Energy Consumed = 1.1608739999999728E7
+d-0 : Energy Consumed = 180000.0
+Cost of execution in cloud = 2204370.000000065
+Total network usage = 1035840.0
+
+
+#####################################
+dept = 4
+site = 20
+worker = 1
+
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#####################################
+dept = 8
+site = 4
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, cloud_scheduler, worker_reminder, REMINDER_MSG] ---> 1269.2585106383026
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 33.202352939862436
+BIKE_USEAGE ---> 0.3999999999996362
+SCHEDULE_COMMAND ---> 0.35806451612939605
+=========================================
+cloud : Energy Consumed = 1.123009999999996E7
+d-0 : Energy Consumed = 180000.0
+Cost of execution in cloud = 2015050.0000000154
+Total network usage = 519520.0
+
+
+#####################################
+dept = 12
+site = 4
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, cloud_scheduler, worker_reminder, REMINDER_MSG] ---> 1310.6472010178188
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 68.20014652014547
+BIKE_USEAGE ---> 0.3999999999996362
+SCHEDULE_COMMAND ---> 0.1000000000003638
+=========================================
+cloud : Energy Consumed = 1.1250579999999966E7
+d-0 : Energy Consumed = 180000.0
+Cost of execution in cloud = 2025290.000000015
+Total network usage = 910205.0
+
+
+#####################################
+dept = 16
+site = 4
+worker = 1

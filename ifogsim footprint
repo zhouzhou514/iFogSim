@@ -1,0 +1,170 @@
+footprint of simulation [fragments of raw data]
+FOG:
+
+#####################################
+dept = 4
+site = 4
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, fog_predictor, worker_reminder, REMINDER_MSG] ---> 338.79500000000075
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 8.100000000000364
+BIKE_USEAGE ---> 0.3999999999996362
+BLOCK_STATE ---> 2.1000000000003354
+SCHEDULE_COMMAND ---> 2.107080078125364
+CROSS_BLOCK_SCHEDULE ---> 1.733333333333697
+=========================================
+cloud : Energy Consumed = 2845240.0
+d-0 : Energy Consumed = 1361520.0
+Cost of execution in cloud = 522620.0000000003
+Total network usage = 38568.333333333336
+
+
+#####################################
+dept = 4
+site = 8
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, fog_predictor, worker_reminder, REMINDER_MSG] ---> 396.89699367088747
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 35.0
+BIKE_USEAGE ---> 0.3999999999996362
+BLOCK_STATE ---> 2.1007352829155934
+SCHEDULE_COMMAND ---> 2.100000000000364
+CROSS_BLOCK_SCHEDULE ---> 1.733333333333697
+=========================================
+cloud : Energy Consumed = 2541660.0000000014
+d-0 : Energy Consumed = 1753750.0
+Cost of execution in cloud = 370830.00000000163
+Total network usage = 99553.33333333333
+
+
+#####################################
+dept = 4
+site = 12
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, fog_predictor, worker_reminder, REMINDER_MSG] ---> 532.9090069284039
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 245.0
+BIKE_USEAGE ---> 0.3999999999996362
+BLOCK_STATE ---> 5.999902552452682
+SCHEDULE_COMMAND ---> 2.100000000000364
+CROSS_BLOCK_SCHEDULE ---> 1.733333333333697
+=========================================
+cloud : Energy Consumed = 2569640.000000002
+d-0 : Energy Consumed = 1758600.0
+Cost of execution in cloud = 384820.00000000134
+Total network usage = 159880.0
+
+
+#####################################
+dept = 4
+site = 16
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, fog_predictor, worker_reminder, REMINDER_MSG] ---> 1780.7173076923034
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 2660.0
+BIKE_USEAGE ---> 0.3999999999996362
+BLOCK_STATE ---> 2.3502288820536137
+SCHEDULE_COMMAND ---> 2.100000000000364
+CROSS_BLOCK_SCHEDULE ---> 1.733333333333697
+=========================================
+cloud : Energy Consumed = 2421320.000000002
+d-0 : Energy Consumed = 1760750.0
+Cost of execution in cloud = 310660.0000000011
+Total network usage = 182748.33333333334
+
+
+#####################################
+dept = 4
+site = 20
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, fog_predictor, worker_reminder, REMINDER_MSG] ---> 2320.571518987339
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 3920.0
+BIKE_USEAGE ---> 0.3999999999996362
+BLOCK_STATE ---> 2.5535981379453
+SCHEDULE_COMMAND ---> 2.100000000000364
+CROSS_BLOCK_SCHEDULE ---> 1.733333333333697
+=========================================
+cloud : Energy Consumed = 2553780.0000000005
+d-0 : Energy Consumed = 1751850.0
+Cost of execution in cloud = 376890.00000000076
+Total network usage = 199558.33333333334
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#####################################
+dept = 8
+site = 4
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, fog_predictor, worker_reminder, REMINDER_MSG] ---> 359.69039087947755
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 8.100000000000364
+BIKE_USEAGE ---> 0.3999999999996362
+BLOCK_STATE ---> 2.2179208312537355
+SCHEDULE_COMMAND ---> 3.9709106455866277
+CROSS_BLOCK_SCHEDULE ---> 0.35806451612939605
+=========================================
+cloud : Energy Consumed = 2469480.000000001
+d-0 : Energy Consumed = 1351070.0
+Cost of execution in cloud = 334740.0000000009
+Total network usage = 96428.33333333333
+
+
+#####################################
+dept = 12
+site = 4
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, fog_predictor, worker_reminder, REMINDER_MSG] ---> 383.0225165562897
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 8.100000000000364
+BIKE_USEAGE ---> 0.3999999999996362
+BLOCK_STATE ---> 2.2003455535427774
+SCHEDULE_COMMAND ---> 2.1717056275538624
+CROSS_BLOCK_SCHEDULE ---> 0.1000000000003638
+=========================================
+cloud : Energy Consumed = 2390160.0000000023
+d-0 : Energy Consumed = 1356220.0
+Cost of execution in cloud = 295080.0000000008
+Total network usage = 174163.33333333334
+
+
+#####################################
+dept = 16
+site = 4
+worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, fog_predictor, worker_reminder, REMINDER_MSG] ---> 378.28598726114427
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 8.100000000000364
+BIKE_USEAGE ---> 0.3999999999996362
+BLOCK_STATE ---> 2.9004879350819976
+SCHEDULE_COMMAND ---> 2.105200830473888
+CROSS_BLOCK_SCHEDULE ---> 0.10019531250036931
+=========================================
+cloud : Energy Consumed = 2265700.000000006
+d-0 : Energy Consumed = 1354670.0
+Cost of execution in cloud = 232850.00000000047
+Total network usage = 278431.6666666667
