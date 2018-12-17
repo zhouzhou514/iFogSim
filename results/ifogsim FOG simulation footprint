@@ -1,0 +1,54 @@
+ifogsim FOG simulation footprint
+
+config:	dept->5
+		site->5
+		worker->1
+
+=========================================
+[BIKE_USEAGE, bikedata_collector, fog_predictor, worker_reminder, REMINDER_MSG] ---> 404.1719379844896
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 10.0
+BIKE_USEAGE ---> 0.4000000000014552
+BLOCK_STATE ---> 2.5577644470838763
+SCHEDULE_COMMAND ---> 2.1001148879513494
+CROSS_BLOCK_SCHEDULE ---> 1.6806451612888673
+=========================================
+d-0 : Energy Consumed = 6938900.0
+ms-0-0 : Energy Consumed = 2246622.0000000726
+mw-0-0 : Energy Consumed = 213815.39999999895
+Cost of execution in cloud = 1848379.9999999702
+Total network usage = 75183.33333333333
+
+#########################################
+
+config:	dept->5
+		site->10
+		worker->1
+
+=========================================
+[BIKE_USEAGE, bikedata_collector, fog_predictor, worker_reminder, REMINDER_MSG] ---> 438.90596926715676
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 70.0
+BIKE_USEAGE ---> 0.4000000000014552
+BLOCK_STATE ---> 2.8750248818414987
+SCHEDULE_COMMAND ---> 2.099999999998545
+CROSS_BLOCK_SCHEDULE ---> 1.6806451612888673
+=========================================
+d-0 : Energy Consumed = 8772750.0
+ms-0-9 : Energy Consumed = 2246622.0000000726
+mw-0-0 : Energy Consumed = 216877.64999999746
+Cost of execution in cloud = 1399319.9999999667
+Total network usage = 183835.0
+
+#########################################
+
+config:	dept->5
+		site->20
+		worker->1
+
+
+#########################################
