@@ -81,7 +81,19 @@ Total network usage = 1035840.0
 dept = 4
 site = 20
 worker = 1
-
+=========================================
+[BIKE_USEAGE, bikedata_collector, cloud_scheduler, worker_reminder, REMINDER_MSG] ---> 2294.436950904399
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 2328.4399980092094
+BIKE_USEAGE ---> 0.3999999999996362
+SCHEDULE_COMMAND ---> 1.733333333333697
+=========================================
+cloud : Energy Consumed = 1.15576199999997E7
+d-0 : Energy Consumed = 180000.0
+Cost of execution in cloud = 2178810.0000000885
+Total network usage = 1157641.6666666667
 
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -127,3 +139,16 @@ Total network usage = 910205.0
 dept = 16
 site = 4
 worker = 1
+=========================================
+[BIKE_USEAGE, bikedata_collector, cloud_scheduler, worker_reminder, REMINDER_MSG] ---> 2152.6921364985187
+=========================================
+TUPLE CPU EXECUTION DELAY
+=========================================
+SITE_STATE ---> 2075.000009155415
+BIKE_USEAGE ---> 0.3999999999996362
+SCHEDULE_COMMAND ---> 0.1000000000003638
+=========================================
+cloud : Energy Consumed = 1.1375379999999965E7
+d-0 : Energy Consumed = 180000.0
+Cost of execution in cloud = 2087690.0000000147
+Total network usage = 1123465.0
